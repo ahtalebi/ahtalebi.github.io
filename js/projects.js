@@ -1,142 +1,201 @@
-/* ─────────────────────────────────────────────
-   PROJECT DATA
-   Add / edit your projects here.
-   Fields:
-     title      – project name
-     tags       – array of tag strings
-     img        – path to image (optional; omit or set null for placeholder)
-     short      – one-line teaser shown on the card
-     desc       – full description shown in the modal (supports \n for paragraphs)
-     links      – array of { label, url, primary? }
-───────────────────────────────────────────── */
-const PROJECTS = [
+// Project data - each project has detailed content for the modal
+const projectsData = [
   {
-    title: "Protein Folding with GNNs",
-    tags: ["Graph NN", "Biology"],
-    img: null,
-    short: "Predicting protein structure from sequence using message-passing networks.",
-    desc: "This project explores the use of graph neural networks to predict 3D protein structure from amino acid sequences. We designed a hierarchical message-passing architecture that captures both local residue interactions and global tertiary structure.\n\nThe model was trained on the PDB dataset and evaluated against AlphaFold2 predictions, achieving competitive accuracy at a fraction of the inference cost.\n\nKey contributions include a novel edge-feature encoding scheme for torsion angles and a multi-scale readout head for per-residue confidence estimation.",
-    links: [
-      { label: "Paper", url: "#", primary: true },
-      { label: "Code", url: "#" }
-    ]
+    id: 1,
+    title: "Machine Learning for Protein Folding",
+    shortDesc: "Deep learning models to predict protein structures",
+    fullDescription: `This project develops novel deep learning architectures for predicting protein folding patterns from amino acid sequences.
+
+Key achievements:
+• Achieved 92% accuracy on the CASP benchmark dataset
+• Reduced inference time by 40% compared to AlphaFold
+• Open-sourced the model and training pipeline
+
+The model uses a combination of transformer architectures and graph neural networks to capture both local and global dependencies in protein sequences. This work has implications for drug discovery and understanding genetic diseases.
+
+Future work includes extending the model to protein-protein interactions and integrating with molecular dynamics simulations.`,
+    tags: ["Deep Learning", "Bioinformatics", "PyTorch"],
+    image: null, // Will use placeholder
+    links: {
+      paper: "https://arxiv.org/abs/xxx",
+      github: "https://github.com/yourusername/protein-folding",
+      demo: "https://huggingface.co/spaces/yourusername/protein-demo"
+    }
   },
   {
-    title: "Climate Downscaling",
-    tags: ["Diffusion", "Climate"],
-    img: null,
-    short: "Super-resolution of coarse climate model outputs using diffusion models.",
-    desc: "High-resolution regional climate projections are essential for adaptation planning, but running global climate models at fine resolution is computationally prohibitive.\n\nWe frame statistical downscaling as a conditional image super-resolution problem and train a latent diffusion model on ERA5 reanalysis data paired with CMIP6 outputs.\n\nOur method produces physically consistent precipitation and temperature fields at 4 km resolution, outperforming prior CNN-based downscaling baselines on extreme event metrics.",
-    links: [
-      { label: "Preprint", url: "#", primary: true },
-      { label: "Dataset", url: "#" },
-      { label: "Demo", url: "#" }
-    ]
+    id: 2,
+    title: "Generative Models for Molecular Design",
+    shortDesc: "Creating novel molecules with desired properties",
+    fullDescription: `A generative framework for designing drug-like molecules with specific chemical properties.
+
+Technical highlights:
+• Variational autoencoder with property prediction heads
+• Generated >10,000 novel molecules with drug-likeness >0.8
+• Validated 3 candidates in wet lab experiments
+
+The model learns a continuous latent space of molecular structures, allowing smooth interpolation between known drugs and optimization for properties like solubility, toxicity, and binding affinity.
+
+This work was published at NeurIPS 2024 and the code is available for academic use.`,
+    tags: ["Generative AI", "Chemistry", "VAE"],
+    image: null,
+    links: {
+      paper: "https://arxiv.org/abs/yyy",
+      github: "https://github.com/yourusername/mol-gen",
+      colab: "https://colab.research.google.com/..."
+    }
   },
   {
-    title: "NLP for Scientific Literature",
-    tags: ["NLP", "LLM"],
-    img: null,
-    short: "Automated extraction of experimental conditions from chemistry papers.",
-    desc: "Reproducing chemical experiments often requires hours of manual reading. We built a pipeline that uses a fine-tuned language model to extract structured experimental metadata — reagents, solvents, temperatures, yields — from the methods sections of chemistry papers.\n\nThe system was trained on a manually curated corpus of 5 000 reactions and achieves >90% F1 on held-out papers from three top chemistry journals.\n\nAn interactive web interface lets researchers query the resulting database by reaction type, substrate, or condition.",
-    links: [
-      { label: "Paper", url: "#", primary: true },
-      { label: "Try it", url: "#" }
-    ]
+    id: 3,
+    title: "Climate Dynamics Prediction",
+    shortDesc: "Weather forecasting using Graph Neural Networks",
+    fullDescription: `A GNN-based approach for medium-range weather forecasting that outperforms traditional numerical methods.
+
+Key results:
+• 15% improvement in 7-day temperature forecasts
+• 30x faster inference than physics-based models
+• Trained on 40 years of ERA5 reanalysis data
+
+The model represents the Earth as a mesh graph, with nodes representing spatial locations and edges capturing atmospheric interactions. This allows the model to learn complex patterns like storm formation and jet stream dynamics.
+
+We're currently deploying this system for operational forecasting in collaboration with meteorological agencies.`,
+    tags: ["GNNs", "Climate Science", "Forecasting"],
+    image: null,
+    links: {
+      paper: "https://arxiv.org/abs/zzz",
+      github: "https://github.com/yourusername/climate-gnn",
+      website: "https://climate-prediction.example.com"
+    }
+  },
+  {
+    id: 4,
+    title: "Multimodal Learning for Scientific Discovery",
+    shortDesc: "Integrating text, images, and numerical data",
+    fullDescription: `A unified framework that combines research papers, experimental images, and simulation data to accelerate scientific discovery.
+
+This system can:
+• Extract structured knowledge from millions of papers
+• Generate hypotheses for new experiments  
+• Recommend synthesis conditions for novel materials
+
+The model uses contrastive learning to align different modalities in a shared embedding space. We demonstrated its effectiveness by rediscovering 20 known materials and suggesting 5 novel ones that were later synthesized.
+
+The project was recognized with a Best Paper Award at ICML 2024.`,
+    tags: ["Multimodal", "NLP", "Computer Vision"],
+    image: null,
+    links: {
+      paper: "https://arxiv.org/abs/www",
+      github: "https://github.com/yourusername/scientific-ai"
+    }
   }
 ];
 
-/* ─────────────────────────────────────────────
-   RENDER CARDS
-───────────────────────────────────────────── */
-function renderProjects() {
-  const grid = document.getElementById("projects-grid");
+// Function to create project cards
+function createProjectCards() {
+  const grid = document.getElementById('projects-grid');
   if (!grid) return;
-
-  grid.innerHTML = PROJECTS.map((p, i) => `
-    <div class="project-card" data-index="${i}" role="button" tabindex="0"
-         aria-label="Open project: ${p.title}">
-      <div class="project-card-img${p.img ? '' : ' placeholder'}" data-label="No image">
-        ${p.img ? `<img src="${p.img}" alt="${p.title}" loading="lazy" />` : ''}
+  
+  grid.innerHTML = projectsData.map(project => `
+    <div class="project-card" data-project-id="${project.id}">
+      <div class="project-card-img ${!project.image ? 'placeholder' : ''}" data-label="${!project.image ? 'Image coming soon' : ''}">
+        ${project.image ? `<img src="${project.image}" alt="${project.title}">` : '<span style="padding: 2rem;">📷</span>'}
       </div>
       <div class="project-card-body">
         <div class="project-card-tags">
-          ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+          ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
         </div>
-        <h3>${p.title}</h3>
-        <p>${p.short}</p>
+        <h3>${project.title}</h3>
+        <p>${project.shortDesc}</p>
       </div>
     </div>
   `).join('');
-
-  // Open modal on click or Enter/Space
-  grid.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', () => openModal(+card.dataset.index));
-    card.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openModal(+card.dataset.index);
-      }
+  
+  // Add click event listeners
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const projectId = parseInt(card.dataset.projectId);
+      openProjectModal(projectId);
     });
   });
 }
 
-/* ─────────────────────────────────────────────
-   MODAL
-───────────────────────────────────────────── */
-function openModal(index) {
-  const p = PROJECTS[index];
-  const backdrop = document.getElementById('modal-backdrop');
-
-  // Image / placeholder
-  const imgWrap = document.getElementById('modal-img-wrap');
-  if (p.img) {
-    imgWrap.className = 'modal-img-wrap';
-    imgWrap.innerHTML = `<img src="${p.img}" alt="${p.title}" />`;
+// Function to open modal with full project details
+function openProjectModal(projectId) {
+  const project = projectsData.find(p => p.id === projectId);
+  if (!project) return;
+  
+  const modal = document.getElementById('project-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalTags = document.getElementById('modal-tags');
+  const modalLinks = document.getElementById('modal-links');
+  const modalImgWrap = document.getElementById('modal-img-wrap');
+  
+  // Set content
+  modalTitle.textContent = project.title;
+  modalDesc.textContent = project.fullDescription || project.shortDesc;
+  
+  // Set tags
+  modalTags.innerHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+  
+  // Set image
+  if (project.image) {
+    modalImgWrap.innerHTML = `<img src="${project.image}" alt="${project.title}">`;
+    modalImgWrap.classList.remove('placeholder');
   } else {
-    imgWrap.className = 'modal-img-wrap placeholder';
-    imgWrap.innerHTML = 'No image';
+    modalImgWrap.innerHTML = '<div class="placeholder" style="padding: 4rem; text-align: center; color: #8a8480;">📷 Project visualization</div>';
+    modalImgWrap.classList.add('placeholder');
   }
-
-  // Tags
-  document.getElementById('modal-tags').innerHTML =
-    p.tags.map(t => `<span class="tag">${t}</span>`).join('');
-
-  // Title & description (full text)
-  document.getElementById('modal-title').textContent = p.title;
-  document.getElementById('modal-desc').textContent = p.desc;
-
-  // Links
-  document.getElementById('modal-links').innerHTML =
-    (p.links || []).map(l =>
-      `<a href="${l.url}" class="btn ${l.primary ? 'btn-primary' : 'btn-ghost'}"
-          ${l.url !== '#' ? 'target="_blank" rel="noopener"' : ''}>${l.label}</a>`
-    ).join('');
-
-  backdrop.classList.remove('hidden');
+  
+  // Set links
+  const linksHtml = [];
+  if (project.links.paper) {
+    linksHtml.push(`<a href="${project.links.paper}" target="_blank" class="btn btn-primary">📄 Read Paper</a>`);
+  }
+  if (project.links.github) {
+    linksHtml.push(`<a href="${project.links.github}" target="_blank" class="btn btn-ghost">🐙 GitHub</a>`);
+  }
+  if (project.links.demo) {
+    linksHtml.push(`<a href="${project.links.demo}" target="_blank" class="btn btn-ghost">🚀 Live Demo</a>`);
+  }
+  if (project.links.website) {
+    linksHtml.push(`<a href="${project.links.website}" target="_blank" class="btn btn-ghost">🌐 Website</a>`);
+  }
+  if (project.links.colab) {
+    linksHtml.push(`<a href="${project.links.colab}" target="_blank" class="btn btn-ghost">📓 Colab</a>`);
+  }
+  
+  modalLinks.innerHTML = linksHtml.join('');
+  
+  // Show modal
+  modal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
-
-  // Focus close button for accessibility
-  setTimeout(() => document.getElementById('modal-close')?.focus(), 50);
 }
 
+// Close modal function
 function closeModal() {
-  document.getElementById('modal-backdrop').classList.add('hidden');
+  const modal = document.getElementById('project-modal');
+  modal.classList.add('hidden');
   document.body.style.overflow = '';
 }
 
-// Wire up close button & backdrop click
+// Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  renderProjects();
-
-  document.getElementById('modal-close')?.addEventListener('click', closeModal);
-
-  document.getElementById('modal-backdrop')?.addEventListener('click', e => {
-    if (e.target === e.currentTarget) closeModal();
-  });
-
-  // Esc key
-  document.addEventListener('keydown', e => {
+  createProjectCards();
+  
+  // Close modal when clicking backdrop or close button
+  const modalBackdrop = document.getElementById('project-modal');
+  const closeBtn = document.getElementById('modal-close');
+  
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+  }
+  
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
   });
 });
