@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ─── LEFT 20% — sidebar ───────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <div class="profile-photo-wrap">
+        <!-- Replace src with your actual photo path -->
+        <img src="images/profile.jpg" alt="Your Name" class="profile-photo"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="profile-photo-placeholder" style="display:none;">Your photo here</div>
+      </div>
+
+      <h1 class="sidebar-name">Your Name</h1>
+      <p class="sidebar-title">Research Scientist</p>
+      <p class="sidebar-expertise">Machine Learning · NLP · Computational Biology</p>
+
+      <nav class="sidebar-links">
+        <a href="mailto:you@example.com">you@example.com</a>
+        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+        <a href="files/cv.pdf" target="_blank">Download CV</a>
+      </nav>
+
+    </div>
+  </aside>
+
+  <!-- ─── MIDDLE 60% — main content ───────────────────────────── -->
+  <main class="main">
+
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="about">About</button>
+      <button class="tab-btn" data-tab="projects">Projects</button>
+      <button class="tab-btn" data-tab="outreach">Outreach</button>
+    </nav>
+
+    <!-- ABOUT -->
+    <section id="about" class="tab-panel active">
+      <h2 class="section-heading">About me</h2>
+      <p class="lead">
+        I'm a researcher working at the intersection of machine learning and the
+        natural sciences. I build models that help us understand complex systems —
+        from protein folding to climate dynamics.
+      </p>
+      <p>
+        Currently based in Paris, I'm part of the
+        <a href="#">Lab Name</a> at <a href="#">Institution</a>. Before this, I
+        completed my PhD at <a href="#">University</a> under the supervision of
+        Prof. Someone.
+      </p>
+      <p>
+        My work has been published in Nature, NeurIPS, and ICML. I'm always
+        open to collaboration — feel free to reach out.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <span class="about-card-icon">⬡</span>
+          <h3>Research interests</h3>
+          <ul>
+            <li>Generative models</li>
+            <li>Graph neural networks</li>
+            <li>Scientific computing</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <span class="about-card-icon">◎</span>
+          <h3>Education</h3>
+          <ul>
+            <li>PhD · University Name · 2023</li>
+            <li>MSc · University Name · 2019</li>
+            <li>BSc · University Name · 2017</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="tab-panel">
+      <h2 class="section-heading">Projects</h2>
+      <p class="section-sub">Click a project to learn more.</p>
+      <div class="projects-grid" id="projects-grid"></div>
+    </section>
+
+    <!-- OUTREACH -->
+    <section id="outreach" class="tab-panel">
+      <h2 class="section-heading">Outreach</h2>
+
+      <div class="outreach-list">
+        <article class="outreach-item">
+          <span class="outreach-date">2024</span>
+          <div>
+            <h3>Talk title — Conference Name</h3>
+            <p>Short description of the talk or workshop.</p>
+            <a href="#" class="outreach-link">Slides ↗</a>
+          </div>
+        </article>
+
+        <article class="outreach-item">
+          <span class="outreach-date">2023</span>
+          <div>
+            <h3>Workshop organiser — Event Name</h3>
+            <p>Brief note about what you organised and the outcome.</p>
+            <a href="#" class="outreach-link">Website ↗</a>
+          </div>
+        </article>
+
+        <article class="outreach-item">
+          <span class="outreach-date">2023</span>
+          <div>
+            <h3>Guest lecture — University Name</h3>
+            <p>Introduced 150 MSc students to modern generative models.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── RIGHT 20% — intentionally empty ─────────────────────── -->
+  <div class="right-col" aria-hidden="true"></div>
+
+  <script src="js/projects.js"></script>
+  <script src="js/tabs.js"></script>
+</body>
+</html>
