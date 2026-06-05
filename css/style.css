@@ -210,7 +210,7 @@ ul { list-style: none; }
    ABOUT
 ───────────────────────────────────────────── */
 .lead {
-  font-family: var(--font-display);
+  font-family: 'Lora', serif;
   font-size: 1.15rem;
   font-weight: 300;
   font-style: italic;
