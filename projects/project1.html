@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Learning for Protein Folding | Your Name</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    .project-page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .project-header {
+      margin-bottom: 2rem;
+    }
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .project-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .project-content {
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .project-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem;
+    }
+    .project-content h3 {
+      font-size: 1.2rem;
+      margin: 1.5rem 0 0.5rem;
+    }
+    .project-links {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0,0,0,.1);
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main class="main" style="grid-column: 2;">
+      <div class="project-page">
+        <a href="../index.html" class="back-link">← Back to portfolio</a>
+        
+        <div class="project-header">
+          <h1 class="project-title">Machine Learning for Protein Folding</h1>
+          <div class="project-meta">
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Bioinformatics</span>
+            <span class="tag">PyTorch</span>
+          </div>
+        </div>
+
+        <div class="project-content">
+          <p>This project develops novel deep learning architectures for predicting protein folding patterns from amino acid sequences.</p>
+          
+          <h2>Key Achievements</h2>
+          <ul>
+            <li>Achieved 92% accuracy on the CASP benchmark dataset</li>
+            <li>Reduced inference time by 40% compared to AlphaFold</li>
+            <li>Open-sourced the model and training pipeline</li>
+          </ul>
+          
+          <h2>Technical Approach</h2>
+          <p>The model uses a combination of transformer architectures and graph neural networks to capture both local and global dependencies in protein sequences. This work has implications for drug discovery and understanding genetic diseases.</p>
+          
+          <h2>Future Work</h2>
+          <p>Future work includes extending the model to protein-protein interactions and integrating with molecular dynamics simulations.</p>
+        </div>
+
+        <div class="project-links">
+          <a href="https://arxiv.org/abs/xxx" target="_blank" class="btn btn-primary">📄 Read Paper</a>
+          <a href="https://github.com/yourusername/protein-folding" target="_blank" class="btn btn-ghost">🐙 GitHub</a>
+          <a href="https://huggingface.co/spaces/yourusername/protein-demo" target="_blank" class="btn btn-ghost">🚀 Live Demo</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
