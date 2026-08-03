@@ -2,7 +2,7 @@
   "title": "NLP for Chemistry Papers",
   "year": "2023",
   "tags": ["NLP", "LLM", "Information Extraction"],
-  "img": null,
+  "img": "/home/amir/CICD/personal_website/images/projects/01.jpg",
   "short": "Automated extraction of structured experimental data from the chemistry literature.",
   "body": "<p>Reproducing a chemical synthesis from a paper can take hours of manual reading. We built an end-to-end pipeline that extracts structured records — reagents, solvents, temperatures, reaction times, and yields — from methods sections.</p><h3>Dataset</h3><p>We curated 5,000 annotated reactions from three top chemistry journals (JACS, Angewandte Chemie, Nature Chemistry) and release them under CC BY 4.0.</p><h3>Model</h3><p>A domain-adapted LLM is fine-tuned with a structured prediction head that outputs JSON-formatted reaction records. The model achieves &gt;90% F1 on held-out papers without task-specific prompting.</p><h3>Interface</h3><p>An interactive web interface lets researchers query the resulting database by reaction type, substrate, or experimental condition — cutting literature review time from hours to seconds.</p>",
   "links": [
