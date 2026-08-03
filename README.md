@@ -1,157 +1,93 @@
-# Personal Portfolio Site
+# Personal Website
 
-A clean, milky-white personal portfolio. Left sidebar with photo + bio, centre panel with About / Projects / Outreach tabs. Zero build step — pure HTML, CSS, and vanilla JS.
+Static personal portfolio site — no build step, no framework. Just HTML, CSS, and vanilla JS, served as-is (locally via `live-server`, deployed via GitHub Actions / Pages).
 
----
-
-## ① Create the GitHub repo
-
-```bash
-# On GitHub: New repository → name it  yourusername.github.io
-# (this special name makes it your root GitHub Pages URL)
-
-git init
-git add .
-git commit -m "init: portfolio site"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_USERNAME.github.io.git
-git push -u origin main
-```
-
-If you want a regular repo name (e.g. `portfolio`), your site will live at  
-`https://yourusername.github.io/portfolio` instead.
-
----
-
-## ② Enable GitHub Pages
-
-1. Go to your repo → **Settings → Pages**
-2. Under **Source** select **GitHub Actions**
-3. That's it. The workflow in `.github/workflows/deploy.yml` fires on every push.
-
-Your site will be live at `https://yourusername.github.io` within ~30 seconds of your first push.
-
----
-
-## ③ Develop locally
-
-No install needed. Just open the file directly:
-
-```bash
-# Option A — open in browser directly (simplest)
-open index.html
-
-# Option B — local server (avoids any path quirks)
-python3 -m http.server 8080
-# → http://localhost:8080
-```
-
-Edit files, refresh browser, done.
-
----
-
-## ④ Add or update your profile photo
-
-```bash
-cp /path/to/your/photo.jpg images/profile.jpg
-```
-
-The image is displayed at full sidebar width with a 3:4 aspect ratio and slight desaturation. Any JPEG or PNG works.
-
----
-
-## ⑤ Add a project
-
-Open `js/projects.js` and add an object to the `PROJECTS` array:
-
-```js
-{
-  id: "proj-4",                             // unique string
-  title: "My New Project",
-  tags: ["Tag One", "Tag Two"],
-  image: "new-project.jpg",                 // filename inside images/projects/
-  summary: "One-line description for the card.",
-  description: `
-    Longer description shown in the modal popup.
-    Explain the problem, your approach, and results.
-  `,
-  links: [
-    { label: "Paper", url: "https://..." },
-    { label: "Code",  url: "https://github.com/..." }
-  ]
-}
-```
-
-Then drop the image file:
-
-```bash
-cp /path/to/screenshot.jpg images/projects/new-project.jpg
-```
-
-Leave `image: ""` to show a placeholder — the card still looks good.
-
----
-
-## ⑥ Customise your info
-
-| What                          | Where                        |
-|-------------------------------|------------------------------|
-| Name, title, expertise        | `index.html` — `.sidebar`    |
-| Contact links / CV            | `index.html` — `.sidebar-links` |
-| About text                    | `index.html` — `#about`      |
-| Outreach entries              | `index.html` — `#outreach`   |
-| Colours / fonts               | `css/style.css` — `:root`    |
-
----
-
-## ⑦ Push changes
-
-```bash
-git add .
-git commit -m "feat: add new project"
-git push
-```
-
-GitHub Actions picks it up automatically. Check the **Actions** tab in your repo to watch the deploy.
-
----
-
-## Folder structure
+## File structure
 
 ```
-portfolio/
-├── index.html                  ← main page
+personal_website/
+├── index.html              Main page: sidebar, tabs (About / Projects), project detail view
 ├── css/
-│   └── style.css               ← all styles
+│   └── style.css           All styling for the site
 ├── js/
-│   ├── projects.js             ← project data + rendering + modal
-│   └── tabs.js                 ← tab switching
-├── images/
-│   ├── profile.jpg             ← your photo (replace this)
-│   └── projects/
-│       └── *.jpg               ← one image per project
-├── files/
-│   └── cv.pdf                  ← optional CV download
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          ← GitHub Actions CI/CD
-├── .gitignore
-└── README.md
+│   ├── tabs.js              Handles switching between top-level tabs (About / Projects)
+│   └── projects.js          Loads project data and renders the project list + detail view
+├── projects/
+│   ├── manifest.json        Ordered list of project JSON filenames — THIS is what you edit
+│   │                        to add/remove/reorder projects
+│   └── data/
+│       ├── protein-folding.json
+│       ├── climate-diffusion.json
+│       └── nlp-chemistry.json
+│       (one JSON file per project — add new ones here)
+├── images/                  Profile photo, project images, etc.
+├── files/                   Any downloadable assets (CV, papers, etc.)
+├── package.json             Only dependency is live-server (local dev preview)
+└── README.md                This file
 ```
 
----
+## Role of each file
 
-## Common tweaks
+| File | Role |
+|---|---|
+| `index.html` | Page skeleton: sidebar (name, photo, links), tab nav, About section content, Projects list/detail containers |
+| `css/style.css` | All visual styling — layout, fonts, colors, responsive rules |
+| `js/tabs.js` | Generic tab-switcher: toggles `.active` class on `.tab-btn` / `.tab-panel` pairs based on `data-tab` attribute. Doesn't know about specific tab names. |
+| `js/projects.js` | Fetches `projects/manifest.json`, then fetches each listed project JSON file, and renders both the project list (in the Projects tab) and the individual project detail view when a project is clicked |
+| `projects/manifest.json` | Ordered array of project filenames, e.g. `["protein-folding.json", "climate-diffusion.json"]`. Controls which projects show up and in what order. |
+| `projects/data/*.json` | One file per project — the actual content (title, tags, description, body, links) |
 
-**Change accent colour** — edit `--accent` in `css/style.css`:
-```css
-:root {
-  --accent: #c07a48;   /* ← change this hex */
-}
+## How to add a new project
+
+1. **Create a new JSON file** in `projects/data/`, e.g. `projects/data/my-new-project.json`:
+
+   ```json
+   {
+     "title": "My New Project",
+     "year": "2025",
+     "tags": ["Tag One", "Tag Two"],
+     "img": null,
+     "short": "One-sentence teaser shown in the project list.",
+     "body": "<p>Full write-up goes here as an HTML string.</p><h3>Section heading</h3><p>More detail...</p>",
+     "links": [
+       { "label": "Paper", "url": "https://...", "primary": true },
+       { "label": "Code", "url": "https://..." }
+     ]
+   }
+   ```
+
+   Field notes:
+   - `img`: path to an image (e.g. `"images/projects/my-project.jpg"`), or `null` if you don't have one yet.
+   - `body`: written as a single HTML string. Use `<p>`, `<h3>`, `<ul><li>`, `<em>`, etc. Double quotes inside the string must be escaped as `\"`.
+   - `links`: optional. Mark one entry `"primary": true` to style it as the highlighted button; omit `primary` (or set it to `false`) for secondary/ghost-style buttons.
+
+2. **Add the filename to `projects/manifest.json`**, in the position you want it to appear:
+
+   ```json
+   ["protein-folding.json", "climate-diffusion.json", "nlp-chemistry.json", "my-new-project.json"]
+   ```
+
+3. **(Optional) Add an image** to `images/projects/` if you referenced one in `img`.
+
+4. **Commit and push:**
+
+   ```bash
+   git add projects/
+   git commit -m "Add new project: My New Project"
+   git push
+   ```
+
+No changes to `index.html`, `projects.js`, or CSS are needed — the page picks up new projects automatically from the manifest.
+
+## Local development
+
+```bash
+npm install
+npx live-server
 ```
 
-**Change fonts** — swap the Google Fonts URL in `index.html` and update `--font-display` / `--font-body` in `:root`.
+`fetch()` requires the page to be served over HTTP — opening `index.html` directly via `file://` will not load the project data.
 
-**Add a CV** — put your PDF at `files/cv.pdf`. The sidebar link already points there.
+## Deployment
 
-**Custom domain** — add a `CNAME` file to the repo root containing your domain (e.g. `www.yourname.com`), then set the DNS as described in the GitHub Pages docs.
+Pushing to the main branch triggers the GitHub Actions workflow, which deploys the site (check the **Actions** tab on GitHub to monitor progress).
