@@ -146,12 +146,22 @@
         <button class="back-btn" id="back-btn">← Back to projects</button>
         <div id="project-detail-content"></div>
       </section>
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <p>&copy; 2026 Amir Talebi. All rights reserved.</p>
-      </footer>
     </main>
   </div><!-- /.page-wrap -->
+
+
+  <footer class="site-footer">
+    <p>&copy; <span id="footer-year"></span> Amir Talebi. All rights reserved.</p>
+  </footer>
+
+  <script src="js/projects.js"></script>
+  <script src="js/tabs.js"></script>
+  <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+ </body>
+
+
+
+
 
   <script src="js/projects.js"></script>
   <script src="js/tabs.js"></script>
