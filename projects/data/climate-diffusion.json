@@ -1,0 +1,13 @@
+{
+  "title": "Climate Downscaling via Diffusion",
+  "year": "2023",
+  "tags": ["Diffusion", "Climate", "PyTorch"],
+  "img": null,
+  "short": "Super-resolving coarse climate model output to 4 km resolution using latent diffusion.",
+  "body": "<p>High-resolution regional climate projections are essential for infrastructure planning, yet running global models at fine spatial resolution is prohibitively expensive. We frame statistical downscaling as a conditional image super-resolution problem.</p><h3>Approach</h3><p>A latent diffusion model is conditioned on coarse CMIP6 outputs (50 km) and trained to recover ERA5 reanalysis fields (4 km). We introduce a physics-informed guidance term that penalises violations of mass conservation during sampling.</p><h3>Evaluation</h3><p>Across 30 years of held-out data, our method reduces the RMSE of daily precipitation by 34% and significantly improves skill on the 99th-percentile extreme precipitation metric compared to bicubic and CNN baselines.</p>",
+  "links": [
+    { "label": "Preprint", "url": "#", "primary": true },
+    { "label": "Dataset", "url": "#" },
+    { "label": "Demo", "url": "#" }
+  ]
+}
