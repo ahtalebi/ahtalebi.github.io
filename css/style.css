@@ -516,7 +516,8 @@ ul { list-style: none; }
 .photo-grid img {
   width: 100%;
   max-width: 220px;      /* caps how wide any single photo gets */
-  height: 240px;
+  aspect-ratio: 1 / 1;
+  height: auto;
   object-fit: cover;
   border-radius: var(--radius);
   margin: 0 auto;         /* centers it if narrower than the column */
