@@ -73,6 +73,9 @@
       <nav class="tab-nav">
         <button class="tab-btn active" data-tab="about">About</button>
         <button class="tab-btn" data-tab="projects">Projects</button>
+        <button class="tab-btn" data-tab="cv">My CV</button>
+	<button class="tab-btn" data-tab="photos">Photos</button>
+	<button class="tab-btn" data-tab="papers">My Papers</button>
       </nav>
 
       <!-- ABOUT -->
@@ -146,6 +149,39 @@
         <button class="back-btn" id="back-btn">← Back to projects</button>
         <div id="project-detail-content"></div>
       </section>
+      <!-- CV -->
+      <section id="cv" class="tab-panel">
+  	<h2 class="section-heading">My CV</h2>
+	<p class="section-sub">Download my full curriculum vitae as a PDF.</p>
+	<a href="files/cv.pdf" download class="btn btn-primary">⬇ Download CV (PDF)</a>
+</section>
+
+      <!-- PHOTOS -->
+      <section id="photos" class="tab-panel">
+	<h2 class="section-heading">Photos</h2>
+	<p class="section-sub">A few photos from travels and moments along the way.</p>
+	<div class="photo-grid" id="photo-grid"></div>
+</section>
+
+     <!-- PAPERS -->
+     <section id="papers" class="tab-panel">
+      <h2 class="section-heading">My Papers</h2>
+      <div class="papers-list">
+      <article class="paper-item">
+        <span class="paper-year">2024</span>
+        <div>
+          <h3>Paper Title Here</h3>
+          <p class="paper-venue">Journal / Conference Name</p>
+          <a href="#" class="paper-link" target="_blank">Read paper ↗</a>
+        </div>
+      </article>
+      <!-- copy the <article class="paper-item"> block above for each new paper -->
+    </div>
+  </section>
+      
+      
+      
+      
     </main>
   </div><!-- /.page-wrap -->
 
@@ -156,6 +192,7 @@
 
   <script src="js/projects.js"></script>
   <script src="js/tabs.js"></script>
+  <script src="js/photos.js"></script>
   <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
  </body>
 </html>

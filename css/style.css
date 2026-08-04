@@ -505,3 +505,36 @@ ul { list-style: none; }
   font-size: 0.75rem;
   color: var(--ink-light);
 }
+
+/* PHOTOS */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.photo-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* PAPERS */
+.papers-list { display: flex; flex-direction: column; }
+.paper-item {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 0 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.paper-item:last-child { border-bottom: none; }
+.paper-item:first-child { border-top: 1px solid rgba(0,0,0,.06); }
+.paper-year { font-size: 0.75rem; font-weight: 500; color: var(--accent); letter-spacing: 0.04em; padding-top: 0.2rem; }
+.paper-item h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.2rem; }
+.paper-venue { font-size: 0.875rem; color: var(--ink-mid); margin: 0 0 0.3rem; }
+.paper-link { font-size: 0.78rem; font-weight: 500; color: var(--accent); }
+
+
+
