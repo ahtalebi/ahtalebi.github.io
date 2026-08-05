@@ -1,5 +1,6 @@
 ["data-streaming-flink-kafka.json",
        	"Random-forest-insurance-data.json",
        	"ETL-with-NiFi.json",
-	"RAG-AGENT.json"
+	"RAG-AGENT.json",
+	"LIS-data-analysis.json"
 ]
