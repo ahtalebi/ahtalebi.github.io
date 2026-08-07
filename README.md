@@ -1,5 +1,8 @@
 # Personal Website
 
+
+
+
 Static personal portfolio site — no build step, no framework. Just HTML, CSS, and vanilla JS, served as-is (locally via `live-server`, deployed via GitHub Actions / Pages).
 
 ## File structure
