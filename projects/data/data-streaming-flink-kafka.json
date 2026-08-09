@@ -1,6 +1,6 @@
 {
   "title": "Data Streaming with Kafka & Flink",
-  "year": "2024",
+  "year": "2026",
   "tags": ["Kafka", "CDC", "Flink", "Monitoring"],
   "img": "images/projects/001.jpg",
   "short": "A real-time data streaming pipeline using Kafka, Debezium, Flink, and Superset for fraud detection and monitoring.",
