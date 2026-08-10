@@ -1,13 +1,8 @@
 {
-  "title": "Classification on Insurance data",
-  "year": "2023",
+  "title": "Classification of Insurance Data",
+  "year": "2026",
   "tags": ["Classification", "Random Forest", "Information Extraction"],
   "img": "images/projects/002.jpg",
-  "short": "Automated extraction of structured experimental data from the chemistry literature.",
-  "body": "<p>Reproducing a chemical synthesis from a paper can take hours of manual reading. We built an end-to-end pipeline that extracts structured records — reagents, solvents, temperatures, reaction times, and yields — from methods sections.</p><h3>Dataset</h3><p>We curated 5,000 annotated reactions from three top chemistry journals (JACS, Angewandte Chemie, Nature Chemistry) and release them under CC BY 4.0.</p><h3>Model</h3><p>A domain-adapted LLM is fine-tuned with a structured prediction head that outputs JSON-formatted reaction records. The model achieves &gt;90% F1 on held-out papers without task-specific prompting.</p><h3>Interface</h3><p>An interactive web interface lets researchers query the resulting database by reaction type, substrate, or experimental condition — cutting literature review time from hours to seconds.</p>",
-  "links": [
-    { "label": "Paper", "url": "#", "primary": true },
-    { "label": "Try it", "url": "#" },
-    { "label": "Data", "url": "#" }
-  ]
+  "short": "Insurance data classification using machine learning for risk assessment and data-driven decision-making.",
+  "body": "<p>Efficient data management is essential for maintaining customer trust and ensuring regulatory compliance in the insurance industry. Insurance companies need accurate and efficient methods to assess and categorize risk based on customer and policy data. This process, known as insurance classification, plays an important role in risk assessment and model risk management. By applying machine learning techniques, such as Random Forest classification, insurance data can be systematically analyzed to support more consistent, efficient, and data-driven decision-making.</p><h3>Dataset</h3><p>The dataset used for modeling consists of more than 50,000 real-world insurance claims recorded during 2025.</p><h3>Model</h3><p>A Random Forest model was used for classification and trained using an 80/20 train-test split. Hyperparameter tuning was performed to identify the optimal model configuration and improve predictive performance. Before training, the data underwent cleaning and imputation to address missing and inconsistent values. Categorical variables were encoded using target encoding, while one-hot encoding was applied to low-cardinality categorical features, such as age groups.</p><p>The resulting model achieved an accuracy of 93%. Feature selection and SHAP (SHapley Additive exPlanations) analysis were also performed to identify the most influential features and better understand their impact on the model's predictions.</p><h3>Interface</h3><p>All project data, code, and related artifacts were maintained in a GitHub repository to support version control and future maintenance. In addition, an API was developed to provide the business team with access to the model and enable them to test its initial results. Postman was used to test the API and provide a practical way for new users to learn how to interact with and use the model.</p>"
 }
