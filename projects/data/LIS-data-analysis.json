@@ -1,13 +1,8 @@
 {
-  "title": "Data analysis of LIS data center users",
+  "title": "Data Analysis of LIS Data Center Users",
   "year": "2024",
   "tags": ["Shiny", "Python", "MySQL", "Time series"],
   "img": "images/projects/005.jpg",
-  "short": "Predicting 3D protein structure from sequence using message-passing networks.",
-  "body": "<p>This project explores the use of graph neural networks to predict three-dimensional protein structure from amino acid sequences. We designed a hierarchical message-passing architecture that captures both local residue interactions and global tertiary structure cues.</p><h3>Motivation</h3><p>Despite AlphaFold2's success, understanding <em>why</em> a model makes a given prediction remains an open problem. Our architecture is designed with interpretability in mind, exposing per-edge attention weights that correspond to known biochemical contacts.</p><h3>Method</h3><p>We represent each protein as a k-NN graph in sequence space and apply six rounds of equivariant message passing. A multi-scale readout head produces both a per-residue confidence score and a global fold classification.</p><h3>Results</h3><p>Evaluated on CASP15 targets, our model achieves TM-score 0.82 on single-domain proteins — competitive with ESMFold at one-tenth the parameter count.</p>",
-  "links": [
-    { "label": "Paper", "url": "#", "primary": true },
-    { "label": "Code", "url": "#" },
-    { "label": "Poster", "url": "#" }
-  ]
+  "short": "Time series analysis and backend architecture for HPC usage data — reliable database interaction is foundational to any data center's operations.",
+  "body": "<p>The foundation of any data analysis project is a stable, fault-tolerant database that adheres to the principles of the CAP theorem. There are several approaches to connecting to such a data source and initiating analysis, one of the most effective being Object-Relational Mapping (ORM). In this project, we used a MySQL server together with Python and R, applying time series techniques such as ARMA to analyze usage data from the Luxembourg Income Study (LIS) data center users.</p><h3>Method</h3><p>The project was structured in two phases. The first phase involved integrating multiple existing databases and tables into a single, consolidated table to serve as the foundation for analysis. ORMs were used throughout this process to establish connections, execute queries, and transform and retrieve data efficiently. The second phase focused on analysis and visualization: we used the Shiny library in R to build an interactive dashboard, enabling system administrators to monitor and evaluate usage of the data center's HPC clusters. Since usage data is generated daily across all HPC users, maintaining up-to-date statistics is essential for the LIS data center to effectively manage the resources it provides to its users.</p><h3>Results</h3><p>The project delivered an interactive dashboard alongside a continuously growing consolidated table, built by integrating data from multiple source databases into a single analytical foundation.</p>"
 }
