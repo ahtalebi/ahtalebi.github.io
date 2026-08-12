@@ -3,11 +3,11 @@
   "year": "2023",
   "tags": ["Clickhouse", "ETL", "NiFi"],
   "img": "images/projects/003.jpg",
-  "short": "Super-resolving coarse climate model output to 4 km resolution using latent diffusion.",
-  "body": "<p>High-resolution regional climate projections are essential for infrastructure planning, yet running global models at fine spatial resolution is prohibitively expensive. We frame statistical downscaling as a conditional image super-resolution problem.</p><h3>Approach</h3><p>A latent diffusion model is conditioned on coarse CMIP6 outputs (50 km) and trained to recover ERA5 reanalysis fields (4 km). We introduce a physics-informed guidance term that penalises violations of mass conservation during sampling.</p><h3>Evaluation</h3><p>Across 30 years of held-out data, our method reduces the RMSE of daily precipitation by 34% and significantly improves skill on the 99th-percentile extreme precipitation metric compared to bicubic and CNN baselines.</p>",
-  "links": [
-    { "label": "Preprint", "url": "#", "primary": true },
-    { "label": "Dataset", "url": "#" },
-    { "label": "Demo", "url": "#" }
-  ]
+  "short": "As one of the core skills as a Data Engineer ",
+  "body": "<p>As one of the core skills of a Data Engineer, ETL (Extract, Transform, Load) plays a critical role in modern data engineering workflows. ETL pipelines integrate raw data from multiple sources, transform and clean the data, and perform data quality checks to ensure its reliability and consistency. These capabilities are essential for building robust and scalable data solutions.</p>
+<h3>Approach</h3>
+<p>The approach to ETL projects is not always straightforward, as it involves integrating multiple data sources, applying transformations, and ensuring data quality throughout the pipeline. In this project, we used Apache NiFi, an open-source data integration tool provided by the Apache Software Foundation. NiFi offers a visual, drag-and-drop interface with a wide range of processors for implementing ETL workflows. Each processor requires specific configurations and parameters to function correctly.</p>
+<p>An ETL pipeline also requires both a source and a destination database. In our case, Oracle was used as the source database, while ClickHouse served as the destination data warehouse and OLAP database.</p>
+<h3>Evaluation</h3>
+<p>To evaluate the performance of the developed pipeline, we considered several key factors. First, the pipeline must execute successfully and reliably. We then assessed the processing speed of data transformations and monitored the number of processors required to complete the workflow. These metrics provide a basis for evaluating the pipeline's efficiency, scalability, and overall performance.</p>"
 }
